@@ -22,7 +22,7 @@ class SimpleThread extends Thread {
         while (count < maxCount) {
             ++count;
             System.out.println(name + " копает " + count);
-            yield();
+            Thread.yield();
         }
     }
 }
@@ -47,7 +47,7 @@ class SimpleThread2 extends Thread {
             while (count < maxCount) {
                 ++count;
                 System.out.println(name + " копает " + count);
-                yield();
+                Thread.yield();
             }
         }
         finally {
@@ -117,7 +117,7 @@ class ThreadHelper extends Thread {
             while (count < 20000) {
                 ++count;
                 System.out.println(name + " копает " + count);
-                yield();
+                Thread.yield();
             }
             System.out.println(name + " ждёт " + other.name);
             other.join();
@@ -125,7 +125,7 @@ class ThreadHelper extends Thread {
             while (count < 30000) {
                 ++count;
                 System.out.println(name + " копает " + count);
-                yield();
+                Thread.yield();
             }
 
         } catch (Exception e) {
@@ -142,9 +142,9 @@ public class ThreadsExample {
         //runRunnable();
         //runExecutor();
         //submitExecutor();
-        //join();
+        join();
         //runThreadWithPriority();
-        runThreadWithDaemon();
+        //runThreadWithDaemon();
         //runThreadWithException();
     }
 
