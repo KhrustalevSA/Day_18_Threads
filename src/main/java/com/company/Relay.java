@@ -7,6 +7,7 @@ public class Relay extends Thread {
     List<Team> teamsOnRelay = new ArrayList<>();
     int count = 0;
     int relayLength = 500;
+    ArrayList<String> winner = new ArrayList<>();
 
     Relay(String[] teamNames,String[][] teamRunners){
         for (String str : teamNames){
@@ -25,9 +26,9 @@ public class Relay extends Thread {
         try {
             for(Team team : teamsOnRelay){
                 Runner runner1 = new Runner(team.runners.get(0),1,team);
-                Runner runner2 = new Runner(team.runners.get(1),runner1,2,team);
-                Runner runner3 = new Runner(team.runners.get(2),runner2,3,team);
-                Runner runner4 = new Runner(team.runners.get(3),runner3,4,team);
+                Runner runner2 = new Runner(team.runners.get(1),runner1,2,team,winner);
+                Runner runner3 = new Runner(team.runners.get(2),runner2,3,team,winner);
+                Runner runner4 = new Runner(team.runners.get(3),runner3,4,team,winner);
 
                 runner1.start();
                 runner2.start();
@@ -35,7 +36,8 @@ public class Relay extends Thread {
                 runner4.start();
 
             }
-
+            sleep(250);
+            System.out.println("Победила команда " + winner.get(0));
 
         } catch (Exception e) {
             System.out.println(e);
